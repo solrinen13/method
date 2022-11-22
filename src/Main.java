@@ -34,27 +34,22 @@ public class Main {
         System.out.println("===================");
     }
 
-    public static void deliveryTime(int deliveryDistance)
-    {
-        if (deliveryDistance < 20)
-        {
+    public static void deliveryTime(int deliveryDistance) {
+        if (deliveryDistance < 20) {
             int dayToDelivery = 1;
             System.out.println("Потребуется дней: " + dayToDelivery);
         }
         else
-            if (deliveryDistance > 20 && deliveryDistance <= 60)
-        {
+            if (deliveryDistance > 20 && deliveryDistance <= 60) {
             int dayToDelivery = 2;
             System.out.println("Потребуется дней: "+dayToDelivery);
         }
         else
-            if (deliveryDistance > 60 && deliveryDistance < 100)
-            {
+            if (deliveryDistance > 60 && deliveryDistance < 100) {
                 int dayToDelivery = 3;
                 System.out.println("Потребуется дней:"+dayToDelivery);
             }
-             else
-             {
+             else {
                 System.out.println("Дистанция слишком велика для доставки");
              }
 
