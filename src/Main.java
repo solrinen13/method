@@ -63,7 +63,6 @@ public class Main {
 
 
 
-
     public static void main(String[] args) {
         //task1
         Scanner in = new Scanner(System.in);
