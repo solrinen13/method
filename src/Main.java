@@ -3,64 +3,52 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void leapYearCheck(int a)
-    {
+    public static void leapYearCheck(int yearValue) {
 
-        if ( a % 4 == 0 )
-        {
-            System.out.println( a+" високосный год");
-        }
-
-        else
-        {
-            System.out.println( a+" не високосный год");
+        if (yearValue % 4 == 0 && yearValue % 100 != 0 || yearValue % 400 == 0) {
+            System.out.println(yearValue + " високосный год");
+        } else {
+            System.out.println(yearValue + " не високосный год");
         }
         System.out.println("===================");
     }
 
-    public static void checkTypeOS_AndOldOS(int a,int b, int c)
-    {
-        if (a == 1 && b == c)
-        {
+    public static void checkTypeOS_AndOldOS(int typeOS, int clientDeviceYear) {
+        int currentYear = LocalDate.now().getYear();
+        if (typeOS == 1 && clientDeviceYear == currentYear) {
             System.out.println("Установите версию приложения для Android по ссылке");
         }
-         else
-             if (a == 1 && b < c)
-         {
+        else if (typeOS == 1 && clientDeviceYear < currentYear) {
             System.out.println("Установите облегченную версию приложения для Android  по ссылке");
 
-         }
-        else
-            if(a == 0 && b == c)
-            {
-                System.out.println("Установите версию приложения для IOS по ссылке");
+        }
+        else if (typeOS == 0 && clientDeviceYear == currentYear) {
+            System.out.println("Установите версию приложения для IOS по ссылке");
 
-            }
-            else
-                if(a == 0 && b < c)
-                {
-                    System.out.println("Установите облегченную версию приложения для IOS по ссылке");
+        }
+        else if (typeOS == 0 && clientDeviceYear < currentYear) {
+            System.out.println("Установите облегченную версию приложения для IOS по ссылке");
 
-                }
-                else System.out.println("Ошибка ввода");
+        } else System.out.println("Ошибка ввода");
 
         System.out.println("===================");
     }
-    public static void deliveryTime(int a)
+
+    public static void deliveryTime(int deliveryDistance)
     {
-        if (a < 20)
+        if (deliveryDistance < 20)
         {
             int dayToDelivery = 1;
             System.out.println("Потребуется дней: " + dayToDelivery);
         }
         else
-            if (a > 20 && a <= 60)
+            if (deliveryDistance > 20 && deliveryDistance <= 60)
         {
             int dayToDelivery = 2;
             System.out.println("Потребуется дней: "+dayToDelivery);
         }
         else
-            if (a > 60 && a < 100)
+            if (deliveryDistance > 60 && deliveryDistance < 100)
             {
                 int dayToDelivery = 3;
                 System.out.println("Потребуется дней:"+dayToDelivery);
@@ -76,13 +64,12 @@ public class Main {
 
 
 
-
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         //task1
         Scanner in = new Scanner(System.in);
         System.out.println("Введите год: ");
         int year = in.nextInt();
+
         leapYearCheck(year);
 
         //task2
@@ -90,12 +77,11 @@ public class Main {
         System.out.println("Android = 1, IOS = 0, введите тип вашей операционной системы: ");
         int clientOS = inOS.nextInt();
 
-         Scanner inAgeOS = new Scanner(System.in);
-         System.out.println("Введите год выпуска вашего устройства: ");
-         int clientDeviceYear = inAgeOS.nextInt();
-         int currentYear = LocalDate.now().getYear();
+        Scanner inAgeOS = new Scanner(System.in);
+        System.out.println("Введите год выпуска вашего устройства: ");
+        int clientDeviceYear = inAgeOS.nextInt();
 
-        checkTypeOS_AndOldOS(clientOS,clientDeviceYear, currentYear);
+        checkTypeOS_AndOldOS(clientOS, clientDeviceYear);
 
         //task3
         Scanner inDeliveryDistance = new Scanner(System.in);
